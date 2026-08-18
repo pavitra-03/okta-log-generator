@@ -2,8 +2,8 @@ name: Okta Log Generator Schedule
 
 on:
   schedule:
-    # Runs at minute 0 every 2 hours
-    - cron: '0 */2 * * *'
+    # Runs every 5 minutes for testing
+    - cron: '*/5 * * * *'
   workflow_dispatch: # Allows manual trigger anytime from UI
 
 jobs:
