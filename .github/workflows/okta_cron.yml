@@ -1,10 +1,9 @@
 name: Okta Log Generator Schedule
 
 on:
-  schedule:
-    # Runs at minute 0 of every hour
-    - cron: '0 * * * *'
-  workflow_dispatch: # Allows manual trigger anytime from GitHub UI
+  repository_dispatch:
+    types: [okta_log_trigger]
+  workflow_dispatch:
 
 jobs:
   run-okta-script:
