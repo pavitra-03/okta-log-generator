@@ -1,15 +1,16 @@
-name: Okta Log Generator Schedule
+name: Scheduled Okta Ingestion
 
 on:
-  repository_dispatch:
-    types: [okta_log_trigger]
+  schedule:
+    - cron: '*/30 * * * *'
   workflow_dispatch:
 
 jobs:
-  run-okta-script:
+  ingest-job:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out repository code
+      - name: Checkout repository code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -18,9 +19,11 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests
+        run: |
+          pip install requests
 
-      - name: Execute log generator script
+      - name: Run Okta Ingestion Script
         env:
+          OKTA_DOMAIN: ${{ secrets.OKTA_DOMAIN }}
           OKTA_API_TOKEN: ${{ secrets.OKTA_API_TOKEN }}
-        run: python generate_logs.py
+        run: python okta.py
