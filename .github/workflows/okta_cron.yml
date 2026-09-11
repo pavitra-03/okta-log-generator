@@ -4,7 +4,7 @@ on:
   repository_dispatch:
     types: [okta_log_trigger]
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/55 * * * *'
   workflow_dispatch:
 
 jobs:
