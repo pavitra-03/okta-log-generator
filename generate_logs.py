@@ -3,7 +3,7 @@ import time
 import requests
 import random
 
-OKTA_DOMAIN = "https://trial-1677427.okta.com"
+OKTA_DOMAIN = "https://trial-4853439.okta.com"
 # Reads from GitHub Actions Secret (or local environment variable)
 API_TOKEN = os.environ.get("OKTA_API_TOKEN")
 
